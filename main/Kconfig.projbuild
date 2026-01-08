@@ -1,0 +1,89 @@
+menu "ESP32-S3-CAM Telegram Configuration"
+
+    menu "WiFi Configuration"
+        config WIFI_SSID
+            string "WiFi SSID"
+            default "YourWiFiSSID"
+            help
+                WiFi SSID (network name) to connect to.
+
+        config WIFI_PASSWORD
+            string "WiFi Password"
+            default "YourWiFiPassword"
+            help
+                WiFi password (WPA or WPA2).
+    endmenu
+
+    menu "Telegram Bot Configuration"
+        config TELEGRAM_BOT_TOKEN
+            string "Telegram Bot Token"
+            default "YOUR_BOT_TOKEN_HERE"
+            help
+                Telegram Bot API Token from BotFather.
+
+        config TELEGRAM_CHAT_ID
+            string "Telegram Chat ID"
+            default "YOUR_CHAT_ID_HERE"
+            help
+                Target Telegram Chat ID to send messages to.
+    endmenu
+
+    menu "Detection Configuration"
+        config ENABLE_FACE_DETECTION
+            bool "Enable Face Detection"
+            default y
+            help
+                Enable face detection feature.
+
+        config ENABLE_MOTION_DETECTION
+            bool "Enable Motion Detection"
+            default y
+            help
+                Enable motion detection feature.
+
+        config MOTION_THRESHOLD
+            int "Motion Detection Threshold"
+            default 15
+            range 5 50
+            help
+                Threshold for motion detection sensitivity (lower = more sensitive).
+
+        config MOTION_PIXEL_THRESHOLD
+            int "Motion Pixel Threshold Percentage"
+            default 5
+            range 1 50
+            help
+                Percentage of changed pixels to trigger motion detection.
+
+        config DETECTION_INTERVAL_MS
+            int "Detection Interval (ms)"
+            default 500
+            range 100 5000
+            help
+                Interval between detection checks in milliseconds.
+
+        config TELEGRAM_COOLDOWN_SEC
+            int "Telegram Notification Cooldown (seconds)"
+            default 10
+            range 5 300
+            help
+                Minimum time between Telegram notifications to avoid spam.
+    endmenu
+
+    menu "Camera Configuration"
+        choice CAMERA_MODULE
+            prompt "Select Camera Module"
+            default CAMERA_MODULE_ESP32S3_CAM
+            help
+                Select the camera module you are using.
+
+            config CAMERA_MODULE_ESP32S3_CAM
+                bool "ESP32-S3-CAM (FREENOVE/Generic)"
+            config CAMERA_MODULE_ESP32S3_EYE
+                bool "ESP32-S3-EYE (Espressif)"
+            config CAMERA_MODULE_XIAO_ESP32S3
+                bool "Seeed XIAO ESP32S3 Sense"
+        endchoice
+    endmenu
+
+endmenu

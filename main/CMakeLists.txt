@@ -1,0 +1,26 @@
+idf_component_register(
+    SRCS 
+        "main.c"
+        "wifi_manager.c"
+        "camera_manager.c"
+        "motion_detector.c"
+        "face_detector.c"
+        "telegram_bot.c"
+        "led_control.c"
+    INCLUDE_DIRS 
+        "include"
+    REQUIRES 
+        esp_wifi
+        esp_http_client
+        esp_https_ota
+        mbedtls
+        nvs_flash
+        esp_event
+        esp_netif
+        esp_timer
+        esp_psram
+        driver
+        json
+    EMBED_TXTFILES
+        "telegram_root_cert.pem"
+)
