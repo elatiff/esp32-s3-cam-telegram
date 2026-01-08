@@ -33,8 +33,19 @@ cd /path/to/project
 
 ### 2. Setup Environment
 
+#### Linux/macOS
 ```bash
 . $HOME/esp/esp-idf/export.sh
+```
+
+#### Windows (Command Prompt)
+```cmd
+%userprofile%\esp\esp-idf\export.bat
+```
+
+#### Windows (PowerShell)
+```powershell
+.$HOME/esp/esp-idf/export.ps1
 ```
 
 ### 3. Konfigurasi
@@ -65,10 +76,19 @@ Navigasi ke **ESP32-S3-CAM Telegram Configuration** dan isi:
 
 ### 4. Build & Flash
 
+#### Linux/macOS
 ```bash
 idf.py build
 idf.py -p /dev/ttyUSB0 flash monitor
 ```
+
+#### Windows
+```cmd
+idf.py build
+idf.py -p COM3 flash monitor
+```
+
+**Catatan**: Ganti `COM3` dengan port yang sesuai (cek di Device Manager)
 
 ## 📱 Setup Telegram Bot
 
